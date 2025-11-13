@@ -1,0 +1,39 @@
+# main.py
+# Program sederhana untuk menambahkan data mahasiswa ke dalam list
+# Menghitung nilai akhir berdasarkan bobot: tugas 30%, UTS 35%, UAS 35%
+
+data_mahasiswa = []  # List untuk menyimpan data mahasiswa
+
+while True:
+    # Meminta input data mahasiswa
+    nama = input("Masukkan nama mahasiswa: ")
+    tugas = float(input("Masukkan nilai tugas (0-100): "))
+    uts = float(input("Masukkan nilai UTS (0-100): "))
+    uas = float(input("Masukkan nilai UAS (0-100): "))
+    
+    # Hitung nilai akhir
+    nilai_akhir = (tugas * 0.3) + (uts * 0.35) + (uas * 0.35)
+    
+    # Simpan data ke list
+    mahasiswa = {
+        "nama": nama,
+        "tugas": tugas,
+        "uts": uts,
+        "uas": uas,
+        "nilai_akhir": round(nilai_akhir, 2)  # Dibulatkan 2 desimal
+    }
+    data_mahasiswa.append(mahasiswa)
+    
+    # Tanya apakah ingin menambah data lagi
+    tambah_lagi = input("Tambah data lagi? (y/t?): ").lower()
+    if tambah_lagi == 't':
+        break
+
+# Tampilkan daftar data mahasiswa
+print("\nDaftar Data Mahasiswa:")
+print("-" * 50)
+for i, mhs in enumerate(data_mahasiswa, start=1):
+    print(f"{i}. Nama: {mhs['nama']}")
+    print(f"Tugas: {mhs['tugas']}, UTS: {mhs['uts']}, UAS: {mhs['uas']}")
+    print(f"Nilai Akhir: {mhs['nilai_akhir']}")
+    print("-" * 50)
